@@ -24,7 +24,12 @@ class Game
   end
 
   def play_game
-    puts "Select your move #{@player_one_name}"
+    puts "Select your move #{@@player_one_name}"
+    @player_1_move = gets.chomp
+    draw_board()
+    puts "Select your move #{@@player_two_name}"
+    @player_2_move = gets.chomp
+    draw_board()
   end
 end
 
@@ -43,8 +48,8 @@ class Player < Game
 end
 
 game = Game.new
-game.play_game
 player = Player.new
 player.get_name
 player.assign_symbol
 game.show_name
+game.play_game
