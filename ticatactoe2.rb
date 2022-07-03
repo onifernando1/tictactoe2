@@ -4,7 +4,8 @@ class Game
   attr_reader :player_one_name, :player_two_name
 
   def initialize
-    @board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    @@board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    @@available_positions = [0,1,2,3,4,5,6,7,8]
     @@player_one_name = ''
     @@player_two_name = ''
   end
@@ -16,21 +17,55 @@ class Game
 
   def draw_board
     horizontal_divider = '----------'
-    puts "#{@board[0]} | #{@board[1]} | #{@board[2]}"
+    puts "#{@@board[0]} | #{@@board[1]} | #{@@board[2]}"
     puts horizontal_divider
-    puts "#{@board[3]} | #{@board[4]} | #{@board[5]}"
+    puts "#{@@board[3]} | #{@@board[4]} | #{@@board[5]}"
     puts horizontal_divider
-    puts "#{@board[6]} | #{@board[7]} | #{@board[8]}"
+    puts "#{@@board[6]} | #{@@board[7]} | #{@@board[8]}"
   end
 
-  def play_game
-    puts "Select your move #{@@player_one_name}"
-    @player_1_move = gets.chomp
+
+  def player_1_move
+    @next_turn = false 
+    until @next_turn == true 
+      puts "Select your move #{@@player_one_name}"
+      @player_1_move = gets.chomp.to_i
+      @player_1_index = (@player_1_move - 1).to_i 
+      if @@board[@player_1_index] != "X" && @@board[@player_1_index] != "O"
+          @@board[@player_1_index] = "X"
+          @next_turn = true 
+      else puts "INVALID SELECTION"  
+      end 
+    end 
     draw_board()
-    puts "Select your move #{@@player_two_name}"
-    @player_2_move = gets.chomp
-    draw_board()
-  end
+    end 
+
+    def player_2_move
+        @next_turn = false 
+        until @next_turn == true 
+          puts "Select your move #{@@player_two_name}"
+          @player_2_move = gets.chomp.to_i
+          @player_2_index = (@player_2_move - 1).to_i 
+          if @@board[@player_2_index] != "X" && @@board[@player_2_index] != "O"
+            @@board[@player_2_index] = "O"
+            @next_turn = true 
+        else puts "INVALID SELECTION"  
+        end 
+        end 
+
+        draw_board()
+    end
+
+    def play_game
+        player_1_move()
+        player_2_move()
+        player_1_move()
+        player_2_move()
+         player_1_move()
+        player_2_move()
+    end
+
+
 end
 
 class Player < Game
