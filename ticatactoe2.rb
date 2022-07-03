@@ -5,7 +5,6 @@ class Game
 
   def initialize
     @@board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    @@available_positions = [0,1,2,3,4,5,6,7,8]
     @@player_one_name = ''
     @@player_two_name = ''
   end
@@ -65,6 +64,7 @@ class Game
         player_2_move()
     end
 
+    def check_win
 
 end
 
