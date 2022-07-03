@@ -125,7 +125,9 @@ end
       puts "Select your move #{@@player_one_name}"
       @player_1_move = gets.chomp.to_i
       @player_1_index = (@player_1_move - 1).to_i 
-      if @@board[@player_1_index] != "X" && @@board[@player_1_index] != "O"
+      if @player_1_move != 1 && @player_1_move != 2 && @player_1_move != 3 && @player_1_move != 4 && @player_1_move != 5 && @player_1_move != 6 && @player_1_move != 7 && @player_1_move != 8 && @player_1_move != 9
+        puts "INVALID "
+      elsif @@board[@player_1_index] != "X" && @@board[@player_1_index] != "O"
           @@board[@player_1_index] = "X"
           @next_turn = true 
       else puts "INVALID SELECTION"  
@@ -141,7 +143,9 @@ end
           puts "Select your move #{@@player_two_name}"
           @player_2_move = gets.chomp.to_i
           @player_2_index = (@player_2_move - 1).to_i 
-          if @@board[@player_2_index] != "X" && @@board[@player_2_index] != "O"
+          if @player_2_move != 1 && @player_2_move != 2 && @player_2_move != 3 && @player_2_move != 4 && @player_2_move != 5 && @player_2_move != 6 && @player_2_move != 7 && @player_2_move != 8 && @player_2_move != 9
+            puts "INVALID "
+          elsif @@board[@player_2_index] != "X" && @@board[@player_2_index] != "O"
             @@board[@player_2_index] = "O"
             @next_turn = true 
           else puts "INVALID SELECTION"  
@@ -162,7 +166,6 @@ end
       end
     end 
 
-   
 
 end
 
